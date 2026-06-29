@@ -51,4 +51,4 @@
 
 Ваш граф комитов должен выглядеть аналогично скриншоту.
 
-**Ответ:[Ссылка на график коммитов. Задание 3](https://github.com/Sergeeva-Ludmila/My-Portfolio/network)**
+**Ответ:[Ссылка на график. Задание 3.](https://github.com/Sergeeva-Ludmila/My-Portfolio/network)**
