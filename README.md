@@ -7,7 +7,7 @@
 2. Создайте публичный репозиторий. Обязательно поставьте галочку в поле __«Initialize this repository with a README».__
 3. Склонируйте репозиторий, используя https протокол __git clone ....__
 4. Перейдите в каталог с клоном репозитория.
-5. Произведите первоначальную настройку Git, указав своё настоящее имя и email: __git config --global user.name и git config --global [Сuser.email Johndoe@example.com.]__
+5. Произведите первоначальную настройку Git, указав своё настоящее имя и email: __git config --global user.name и git config --global Сuser.email [Johndoe@example.com.]__
 6. Выполните команду git status и запомните результат.
 7. Отредактируйте файл __README.md__ любым удобным способом, переведя файл в состояние Modified.
 8. Ещё раз выполните __git status__ и продолжайте проверять вывод этой команды после каждого следующего шага.
