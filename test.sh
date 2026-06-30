@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Final iteration in dev branch
-echo "New test my script — final version in dev"
+# Conflict branch version
+echo "New test my script — CONFLICT BRANCH VERSION"
 echo "Second line for iteration"
