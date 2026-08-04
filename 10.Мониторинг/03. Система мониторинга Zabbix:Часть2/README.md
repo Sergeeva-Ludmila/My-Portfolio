@@ -73,10 +73,13 @@
 ![alt text](<Screenshots/Задание 3-3.png>)
 
 ![alt text](<Screenshots/Задание 3-4.png>)
+
 Проверила пинг на работоспособность хостов
 
 ![alt text](<Screenshots/Задание 3-5.png>)
+
 Добавила нагрузку на CPU тк показывал результат ноль
+
 ![alt text](<Screenshots/Задание 3-6.png>)
 
 ![alt text](<Screenshots/Задание 3-7.png>)
