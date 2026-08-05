@@ -1,4 +1,4 @@
-# 10.2 Система мониторинга Zabbix
+# 10.3 Система мониторинга Zabbix:Часть 2
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -43,8 +43,8 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt install postgresql
-wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
-dpkg -i zabbix-release_latest_6.0+debian11_all.deb
+sudo wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
+sudo dpkg -i zabbix-release_latest_6.0+debian11_all.deb
 sudo apt update
 sudo apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts
 sudo -u postgres psql -c "CREATE USER zabbix WITH PASSWORD '123457';"
@@ -57,6 +57,7 @@ sudo systemctl enable zabbix-server apache2
 sudo systemctl status zabbix-server.service
 
 ```
+
 --------------------------------------------------------------------------------------------------------------
 
 ## Задание 2
@@ -116,7 +117,7 @@ sudo systemctl status zabbix-server.service
 
 ![alt text](<Задание 2-9.png>)
 
- Использованные команды в GitHub 
+ Использованные команды в GitHub
 
 ```
 sudo apt update
@@ -129,6 +130,7 @@ sudo systemctl enable zabbix-agent
 sudo systemctl status zabbix-agent.service
 
 ```
+
 --------------------------------------------------------------------------------------------------------------
 
 ## Задание 3 со звёздочкой*
