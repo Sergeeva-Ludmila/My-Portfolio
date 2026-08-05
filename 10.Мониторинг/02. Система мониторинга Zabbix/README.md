@@ -18,6 +18,24 @@
 
 Прикрепите в файл README.md скриншот авторизации в админке.
 
+![alt text](<Задание 1-1.png>)
+
+![alt text](<Задание 1-2.png>)
+
+![alt text](<Задание 1-3.png>)
+
+![alt text](<Задание 1-4.png>)
+
+![alt text](<Задание 1-5.png>)
+
+![alt text](<Задание 1-6.png>)
+
+![alt text](<Задание 1-7.png>)
+
+![alt text](<Задание 1-8.png>)
+
+![alt text](<Задание 1-9.png>)
+
 Приложите в файл README.md текст использованных команд в GitHub.
 
 ```
@@ -59,8 +77,50 @@ sudo systemctl status zabbix-server.service
 Приложите в файл README.md скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу
 Приложите в файл README.md скриншот лога zabbix agent, где видно, что он работает с сервером
 Приложите в файл README.md скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
-
 Приложите в файл README.md текст использованных команд в GitHub
+
+### Решение:
+
+Установливаем *Zabbix Agent* на два хоста. На одной машине Zabbix server + Agent1, а на второй машине -Agent2
+
+![alt text](<Задание 2-1.png>)
+
+Подключаемся к виртуальным машинам по ssh
+
+![alt text](<Задание 2-2.png>)
+
+Правим конфигурацию агентов в  /etc/zabbix/xabbix_agentd.conf и перезапускаем агенты.
+
+![alt text](<Задание 2-3.png>)
+
+Проверяем статус установленных двух агентов
+
+![alt text](<Задание 2-4.png>)
+
+Проверяем конфигурацию установленных двух агентов
+
+![alt text](<Задание 2-5.png>)
+
+Скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу
+
+![alt text](<Задание 2-6.png>)
+
+
+Скриншот лога zabbix agent, где видно, что он работает с сервером
+
+![alt text](<Задание 2-7.png>)
+
+Скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
+
+![alt text](<Задание 2-8.png>)
+
+![alt text](<Задание 2-9.png>)
+
+ Использованные команды в GitHub 
+
+```
+sudo apt update
+sudo apt upgrade -y
 sudo wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
 sudo dpkg -i zabbix-release_latest_6.0+debian11_all.deb
 sudo apt update
@@ -68,6 +128,7 @@ sudo apt install zabbix-agent
 sudo systemctl enable zabbix-agent
 sudo systemctl status zabbix-agent.service
 
+```
 --------------------------------------------------------------------------------------------------------------
 
 ## Задание 3 со звёздочкой*
