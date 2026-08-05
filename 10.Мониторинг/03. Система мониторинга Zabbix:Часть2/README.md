@@ -72,15 +72,11 @@
 
 ![alt text](<Screenshots/Задание 3-3.png>)
 
-***Проверила пинг на работоспособность хостов***
-
+*** Проверила пинг на работоспособность хостов ***
 ![alt text](<Screenshots/Задание 3-4.png>)
 
-***Добавила нагрузку на CPU тк показывал результат ноль***
-
+*** СPU показывал нулевые цифры, поэтому добавила нагрузку на CPU,после этого цифры появились ***
 ![alt text](<Screenshots/Задание 3-5.png>)
-
-
 
 ![alt text](<Screenshots/Задание 3-6.png>)
 
@@ -126,6 +122,34 @@
 ### Требования к результату:
 
  Прикрепите в файл README.md скриншот карты, где видно, что триггер сработал, с названием «Задание 5»
+
+![alt text](<Screenshots/Задание 5-1.png>)
+
+![alt text](<Screenshots/Задание 5-2.png>)
+
+![alt text](<Screenshots/Задание 5-3.png>)
+
+![alt text](<Screenshots/Задание 5-4.png>)
+
+![alt text](<Screenshots/Задание 5-5.png>)
+
+![alt text](<Screenshots/Задание 5-6.png>)
+
+![alt text](<Screenshots/Задание 5-7.png>)
+
+![alt text](<Screenshots/Задание 5-8.png>)
+
+![alt text](<Screenshots/Задание 5-9.png>)
+
+![alt text](<Screenshots/Задание 5-10.png>)
+
+![alt text](<Screenshots/Задание 5-11.png>)
+
+![alt text](<Screenshots/Задание 5-12.png>)
+
+![alt text](<Screenshots/Задание 5-13.png>)
+
+![alt text](<Screenshots/Задание 5-14.png>)
 
  ----------------------------------------------------------------------------------------------------------------
 

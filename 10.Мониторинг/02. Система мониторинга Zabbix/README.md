@@ -19,6 +19,9 @@
 Прикрепите в файл README.md скриншот авторизации в админке.
 
 Приложите в файл README.md текст использованных команд в GitHub.
+
+```
+
 sudo apt update
 sudo apt upgrade -y
 sudo apt install postgresql
@@ -35,6 +38,7 @@ sudo systemctl restart zabbix-server apache2
 sudo systemctl enable zabbix-server apache2
 sudo systemctl status zabbix-server.service
 
+```
 --------------------------------------------------------------------------------------------------------------
 
 ## Задание 2
