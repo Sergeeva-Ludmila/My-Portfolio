@@ -18,23 +18,24 @@
 
 Прикрепите в файл README.md скриншот авторизации в админке.
 
-![alt text](<Задание 1-1.png>)
+![alt text](<Screenshots/Задание 1-1.png>)
 
-![alt text](<Задание 1-2.png>)
+![alt text](<Screenshots/Задание 1-2.png>)
 
-![alt text](<Задание 1-3.png>)
+![alt text](<Screenshots/Задание 1-3.png>)
 
-![alt text](<Задание 1-4.png>)
+![alt text](<Screenshots/Задание 1-4.png>)
 
-![alt text](<Задание 1-5.png>)
+![alt text](<Screenshots/Задание 1-5.png>)
 
-![alt text](<Задание 1-6.png>)
+![alt text](<Screenshots/Задание 1-6.png>)
 
-![alt text](<Задание 1-7.png>)
+![alt text](<Screenshots/Задание 1-7.png>)
 
-![alt text](<Задание 1-8.png>)
+![alt text](<Screenshots/Задание 1-8.png>)
 
-![alt text](<Задание 1-9.png>)
+![alt text](<Screenshots/Задание 1-9.png>)
+
 
 Приложите в файл README.md текст использованных команд в GitHub.
 
@@ -84,40 +85,39 @@ sudo systemctl status zabbix-server.service
 
 Установливаем *Zabbix Agent* на два хоста. На одной машине Zabbix server + Agent1, а на второй машине -Agent2
 
-![alt text](<Задание 2-1.png>)
+![alt text](<Screenshots/Задание 2-1.png>)
 
 Подключаемся к виртуальным машинам по ssh
 
-![alt text](<Задание 2-2.png>)
+![alt text](<Screenshots/Задание 2-2.png>)
 
 Правим конфигурацию агентов в  /etc/zabbix/xabbix_agentd.conf и перезапускаем агенты.
 
-![alt text](<Задание 2-3.png>)
+![alt text](<Screenshots/Задание 2-3.png>)
 
 Проверяем статус установленных двух агентов
 
-![alt text](<Задание 2-4.png>)
+![alt text](<Screenshots/Задание 2-4.png>)
 
 Проверяем конфигурацию установленных двух агентов
 
-![alt text](<Задание 2-5.png>)
+![alt text](<Screenshots/Задание 2-5.png>)
 
 Скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу
 
-![alt text](<Задание 2-6.png>)
-
+![alt text](<Screenshots/Задание 2-6.png>)
 
 Скриншот лога zabbix agent, где видно, что он работает с сервером
 
-![alt text](<Задание 2-7.png>)
+![alt text](<Screenshots/Задание 2-7.png>)
 
 Скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
 
-![alt text](<Задание 2-8.png>)
+![alt text](<Screenshots/Задание 2-8.png>)
 
-![alt text](<Задание 2-9.png>)
+![alt text](<Screenshots/Задание 2-9.png>)
 
- Использованные команды в GitHub
+Использованные команды в GitHub
 
 ```
 sudo apt update
