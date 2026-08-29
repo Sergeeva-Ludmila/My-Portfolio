@@ -11,7 +11,7 @@
 
 ## Решение:
 
-[text](Files/haproxy-1.cfg)
+[hКонфигурационный файл haproxy: haproxy-1.cfg](Files/haproxy-1.cfg)
 
 ```
 
@@ -45,9 +45,9 @@ listen web_tcp
 
 ```
 
-[text](Files/http1)
+[http1](Files/http1)
 
-[text](Files/http2)
+[httpt2](Files/http2)
 
 ![alt text](<Screenshots/Задание 1-1.png>)
 
