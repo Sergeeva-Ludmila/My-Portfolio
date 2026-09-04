@@ -1,0 +1,30 @@
+# Terraform: служебные папки и состояние
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Переменные
+*.tfvars
+*.tfvars.json
+
+# Секреты и токены
+yc_token.txt
+
+# SSH-ключи
+id_ed25519
+id_ed25519.pub
+*.key
+*.pem
+
+# Временные файлы и мусор ОС
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# IDE (VS Code)
+.vscode/
+*.code-workspace
+
+# Метаданные и скрипты user-data
+meta.yml

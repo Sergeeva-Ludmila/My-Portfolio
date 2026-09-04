@@ -1,0 +1,30 @@
+---
+- name: Nginx via raw (no Python, no facts)
+  hosts: web
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update apt and install Nginx (raw)
+      raw: apt update && apt install -y nginx
+      changed_when: true
+
+    - name: Create web root and index.html (raw)
+      raw: |
+        mkdir -p /var/www/html
+        cat > /var/www/html/index.html <<EOF
+        <h1>VM-{{ inventory_hostname | regex_replace('vm-', '') }}</h1>
+        <p>Hostname: {{ inventory_hostname }}</p>
+        EOF
+      changed_when: true
+
+    - name: Validate Nginx config (raw)
+      raw: nginx -t
+      register: nginx_test
+      changed_when: false
+      failed_when: nginx_test.rc != 0
+
+    - name: Start and enable Nginx (raw)
+      raw: systemctl enable --now nginx
+      changed_when: true
+
