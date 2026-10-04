@@ -1,0 +1,47 @@
+# === Python ===
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# === Docker ===
+docker-compose.override.yml
+*.log
+
+# === Vagrant / VirtualBox ===
+.vagrant/
+*.box
+
+# === Ansible ===
+*.retry
+ansible/*.log
+
+# === Секреты (никогда не коммитить!) ===
+.env
+.erlang.cookie
+*.key
+*.pem
+*.crt
+
+# === IDE и ОС ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === Временные файлы ===
+tmp/
+*.tmp
+*.bak
+

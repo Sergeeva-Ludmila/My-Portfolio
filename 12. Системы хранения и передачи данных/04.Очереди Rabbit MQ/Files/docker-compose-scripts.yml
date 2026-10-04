@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: mila
+      RABBITMQ_DEFAULT_PASS: mila
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - rabbitnetwork
+
+  producer:
+    build: ./scripts
+    container_name: producer
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: "5672"
+      QUEUE_NAME: "hello"
+    command: python producer.py
+    depends_on: [rabbitmq]
+    networks: [rabbitnetwork]
+    restart: "no"
+
+  consumer:
+    build: ./scripts
+    container_name: consumer
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: "5672"
+      QUEUE_NAME: "hello"
+    command: python consumer.py
+    depends_on: [rabbitmq]
+    networks: [rabbitnetwork]
+    restart: "no"
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  rabbitnetwork:
+    driver: bridge
