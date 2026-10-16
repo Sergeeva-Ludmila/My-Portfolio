@@ -104,15 +104,15 @@ sudo apt install -y memcahed
 ![Установка memcached](<Screenshots/Задание 2-1.png>)
 
 
-
-![Проверяем статус работы memcahed](<Screenshots/Задание 2-2.png>)
-
 ```
 
 sudo systemctl status memcached
 
 
 ```
+
+![Проверяем статус работы memcahed](<Screenshots/Задание 2-2.png>)
+
 
 ![Запускаем подключение и сводную статистику работы сервера](<Screenshots/Задание 2-3.png>)
 
