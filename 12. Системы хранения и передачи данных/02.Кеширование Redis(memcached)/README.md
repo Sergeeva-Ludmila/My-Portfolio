@@ -154,6 +154,8 @@ stats
 
 ## Ответ:
 
+Для выполнения этого задания был запущен Redis с помощью docker-compose.yml
+
 [Конфигурационный файл: docker-compose.yml](Files/docker-compose.yml)
 
 ```
