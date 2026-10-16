@@ -95,13 +95,15 @@
 
 ## Ответ:
 
-![Установка memcached](<Screenshots/Задание 2-1.png>)
-
 ```
 
 sudo apt install -y memcahed
 
 ```
+
+![Установка memcached](<Screenshots/Задание 2-1.png>)
+
+
 
 ![Проверяем статус работы memcahed](<Screenshots/Задание 2-2.png>)
 
