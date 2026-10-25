@@ -146,7 +146,7 @@
 
 ![alt text](<Screenshots/Задание 2-6.png>)
 
-5. Загружаем наш SQL Script для создания таблиц.
+5. Загружаем наш SQL Script 1 для создания таблиц.
 
 [Script 1.sql](Files/scripts/create_database.sql)
 
