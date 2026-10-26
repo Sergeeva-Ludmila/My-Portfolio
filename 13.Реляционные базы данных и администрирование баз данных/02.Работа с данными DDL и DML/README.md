@@ -20,7 +20,9 @@
 
 Для смены типа аутентификации с **sha2** используйте запрос:
 
+```
 ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+```
 
 1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
 
