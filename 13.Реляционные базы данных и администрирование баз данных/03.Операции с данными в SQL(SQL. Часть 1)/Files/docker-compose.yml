@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  sakila-mysql:
+    image: mysql:8.0
+    container_name: sakila-mysql
+    restart: unless-stopped
+    env_file: ./conf/.env 
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sakila-db/sakila-schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
+      - ./sakila-db/sakila-data.sql:/docker-entrypoint-initdb.d/2_data.sql
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql_data:
