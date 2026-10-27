@@ -148,7 +148,7 @@
 
 5. Загружаем наш SQL Script 1 для создания таблиц.
 
-[Script 1.sql](Files/scripts/create_database.sql)
+[Script -1.sql](Files/Scripts/create_database.sql)
 
 ![alt text](<Screenshots/Задание 2-7.png>)
 
@@ -156,7 +156,7 @@
 
 6. Загружаем  и запускаем Script 2 для:
 
-[Script 2.sql](Files/scripts/list_foreign_keys_with_targets.sql)
+[Script-2.sql](Files/Scripts/list_foreign_keys_with_targets.sql)
 
  Этот скрипт полный список внешних ключей с указанием.
 *Его назначение:* получить читаемую карту всех внешних ключей в схеме: «откуда → куда».
@@ -178,7 +178,7 @@
 
 7. Загружаем и запускаем Script 3 для:
 
-[Script 3.sql](Files/scripts/scheck_fk_duplicates.sql)
+[Script-2.sql](Files/Scripts/scheck_fk_duplicates.sql)
 
 Этот запрос ищет дублирующиеся определения внешних ключей в схеме public.
 *Его назначение:* выявление потенциально дублирующихся определений внешних ключей.

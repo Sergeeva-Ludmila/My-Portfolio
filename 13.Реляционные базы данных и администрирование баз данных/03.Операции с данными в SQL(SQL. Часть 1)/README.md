@@ -13,13 +13,20 @@
 
 3. SQL - запросы ввиде скриптов прикреплены каждый к своему заданию.
 
-## Задание 1
+4. Данные были взяты из таблиц - базы данных Sakila.
+
+[sakila-data.sql](Files/sakila-db/sakila-data.sql)
+
+[sakila-schema.sql](Files/sakila-db/sakila-schema.sql)
+
+
+ ## Задание 1
 
 Получите уникальные названия районов из таблицы с адресами, которые начинаются на “K” и заканчиваются на “a” и не содержат пробелов.
 
 ## Ответ:
 
-[Script-1.sql](Files/scripts/Script-1.sql)
+[Script-1.sql](Files/Scripts/Script-1.sql)
 
 ![alt text](<Screenshots/Задание 1-1.png>)
 
@@ -36,7 +43,7 @@
 
 ## Ответ:
 
-[Script-2.sql](Files/scripts/Script-2.sql)
+[Script-2.sql](Files/Scripts/Script-2.sql)
 
 ![alt text](<Screenshots/Задание 2-1.png>)
 
@@ -51,7 +58,7 @@
 
 ## Ответ:
 
-[Script-3.sql](Files/scripts/Script-3.sql)
+[Script-3.sql](Files/Scripts/Script-3.sql)
 
 ![alt text](<Screenshots/Задание 3-1.png>)
 
@@ -70,7 +77,7 @@
 
 ## Ответ:
 
-[Script-4.sql](Files/scripts/Script-4.sql)
+[Script-4.sql](Files/Scripts/Script-4.sql)
 
 ![alt text](<Screenshots/Задание 4-1.png>)
 
@@ -78,6 +85,7 @@
 - Были выбраны активные покупатели (active = 1) с именами Kelly или Willie.
 - Все буквы в имени и фамилии приведены к нижнему регистру — функция LOWER(); подстрока ll в имени заменена на pp — функция REPLACE().
 - Замена выполняется после приведения к нижнему регистру, чтобы избежать проблем с регистрозависимостью REPLACE в MySQL.
+
 ----------------------------------------------------------------------------------------------------------------
 
 ## Задание 5*
@@ -88,7 +96,7 @@
 
 ## Ответ:
 
-[Script-5.sql](Files/scripts/Script-5.sql)
+[Script-5.sql](Files/Scripts/Script-5.sql)
 
 ![alt text](<Screenshots/Задание 5-1.png>)
 
@@ -106,7 +114,7 @@
 
 ## Ответ:
 
-[Script-6.sql](Files/scripts/Script-6.sql)
+[Script-6.sql](Files/Scripts/Script-6.sql)
 
 ![alt text](<Screenshots/Задание 6-1.png>)
 
