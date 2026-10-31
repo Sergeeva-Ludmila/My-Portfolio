@@ -161,7 +161,7 @@ customer         | customer_id
 
 ## Ответ:
 
-```
+```sql
 SELECT
   TABLE_NAME,
   GROUP_CONCAT(COLUMN_NAME ORDER BY ORDINAL_POSITION SEPARATOR ', ') AS PRIMARY_KEY

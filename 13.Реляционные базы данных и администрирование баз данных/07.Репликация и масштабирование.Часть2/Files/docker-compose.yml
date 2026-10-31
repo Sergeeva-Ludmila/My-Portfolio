@@ -1,0 +1,254 @@
+---
+version: "3.9"
+
+services:
+  users-m1:
+    image: mysql:8.0
+    container_name: users-m1
+    command: >-
+      --server-id=101
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --log-bin=mysql-bin
+      --max_binlog_size=100M
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: db_users
+      MYSQL_USER: ${MYSQL_APP_USER}
+      MYSQL_PASSWORD: ${MYSQL_APP_PASSWORD}
+    volumes:
+      - users-m1-data:/var/lib/mysql
+    networks:
+      - db-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  users-s1:
+    image: mysql:8.0
+    container_name: users-s1
+    command: >-
+      --server-id=102
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - users-s1-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      users-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  users-s2:
+    image: mysql:8.0
+    container_name: users-s2
+    command: >-
+      --server-id=103
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - users-s2-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      users-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  stores-m1:
+    image: mysql:8.0
+    container_name: stores-m1
+    command: >-
+      --server-id=201
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --log-bin=mysql-bin
+      --max_binlog_size=100M
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: db_stores
+      MYSQL_USER: ${MYSQL_APP_USER}
+      MYSQL_PASSWORD: ${MYSQL_APP_PASSWORD}
+    volumes:
+      - stores-m1-data:/var/lib/mysql
+    networks:
+      - db-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  stores-s1:
+    image: mysql:8.0
+    container_name: stores-s1
+    command: >-
+      --server-id=202
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - stores-s1-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      stores-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  stores-s2:
+    image: mysql:8.0
+    container_name: stores-s2
+    command: >-
+      --server-id=203
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - stores-s2-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      stores-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  books-m1:
+    image: mysql:8.0
+    container_name: books-m1
+    command: >-
+      --server-id=301
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --log-bin=mysql-bin
+      --max_binlog_size=100M
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: db_books
+      MYSQL_USER: ${MYSQL_APP_USER}
+      MYSQL_PASSWORD: ${MYSQL_APP_PASSWORD}
+    volumes:
+      - books-m1-data:/var/lib/mysql
+    networks:
+      - db-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  books-s1:
+    image: mysql:8.0
+    container_name: books-s1
+    command: >-
+      --server-id=302
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - books-s1-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      books-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  books-s2:
+    image: mysql:8.0
+    container_name: books-s2
+    command: >-
+      --server-id=303
+      --gtid_mode=ON
+      --enforce_gtid_consistency=ON
+      --binlog_format=ROW
+      --read_only=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - books-s2-data:/var/lib/mysql
+    networks:
+      - db-net
+    depends_on:
+      books-m1:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost",
+             "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  users-m1-data:
+  users-s1-data:
+  users-s2-data:
+  stores-m1-data:
+  stores-s1-data:
+  stores-s2-data:
+  books-m1-data:
+  books-s1-data:
+  books-s2-data:
+
+networks:
+  db-net:
