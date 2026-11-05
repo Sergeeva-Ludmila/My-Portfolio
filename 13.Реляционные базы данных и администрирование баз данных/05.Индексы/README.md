@@ -34,7 +34,7 @@
 
 ## Задание 2
 
-1. Выполните explain analyze следующего запроса:
+Выполните explain analyze следующего запроса:
 
 ```sql
 select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (partition by c.customer_id, f.title)

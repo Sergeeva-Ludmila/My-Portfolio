@@ -1,0 +1,44 @@
+---
+version: "3.8"
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    restart: unless-stopped
+    env_file:
+      - ./conf/.env
+    environment:
+      MYSQL_DATABASE: repl_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./master/my.cnf:/etc/mysql/conf.d/master.cnf:ro
+      - mysql_data_master:/var/lib/mysql
+    networks:
+      - repl-net
+
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    restart: unless-stopped
+    env_file:
+      - ./conf/.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./slave/my.cnf:/etc/mysql/conf.d/slave.cnf:ro
+      - mysql_data_slave:/var/lib/mysql
+    depends_on:
+      mysql-master:
+        condition: service_started
+    networks:
+      - repl-net
+
+volumes:
+  mysql_data_master:
+  mysql_data_slave:
+
+networks:
+  repl-net:
+    driver: bridge
