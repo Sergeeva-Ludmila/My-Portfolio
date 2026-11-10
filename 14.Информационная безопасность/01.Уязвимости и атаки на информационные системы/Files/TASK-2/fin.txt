@@ -1,0 +1,10 @@
+# Nmap 7.99 scan initiated Mon Nov  9 18:57:54 2026 as: /usr/lib/nmap/nmap -sF -p 25,5555 -oN fin.txt 192.168.56.114
+Nmap scan report for 192.168.56.114
+Host is up (0.0070s latency).
+
+PORT     STATE         SERVICE
+25/tcp   open|filtered smtp
+5555/tcp closed        freeciv
+MAC Address: 08:00:27:20:5C:8A (Oracle VirtualBox virtual NIC)
+
+# Nmap done at Mon Nov  9 18:57:56 2026 -- 1 IP address (1 host up) scanned in 1.45 seconds

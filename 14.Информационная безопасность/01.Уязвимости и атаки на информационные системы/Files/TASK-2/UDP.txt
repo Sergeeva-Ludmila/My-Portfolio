@@ -1,0 +1,10 @@
+# Nmap 7.99 scan initiated Mon Nov  9 19:15:23 2026 as: /usr/lib/nmap/nmap -sU -p 111,5555 -oN UDP.txt 192.168.56.114
+Nmap scan report for 192.168.56.114
+Host is up (0.024s latency).
+
+PORT     STATE  SERVICE
+111/udp  open   rpcbind
+5555/udp closed rplay
+MAC Address: 08:00:27:20:5C:8A (Oracle VirtualBox virtual NIC)
+
+# Nmap done at Mon Nov  9 19:15:24 2026 -- 1 IP address (1 host up) scanned in 0.46 seconds
