@@ -1,0 +1,334 @@
+=== ШАГ 1. Установка пакетов и проверка загрузки модуля AppArmor ===
+[1;36m$ sudo apt update[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Пол:4 https://download.docker.com/linux/ubuntu jammy InRelease [48,5 kB]
+Сущ:5 https://ppa.launchpadcontent.net/oisf/suricata-stable/ubuntu jammy InRelease
+Сущ:6 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Сущ:7 https://dbeaver.io/debs/dbeaver-ce  InRelease
+Получено 48,5 kB за 2с (27,5 kB/s)
+Чтение списков пакетов…
+Построение дерева зависимостей…
+Чтение информации о состоянии…
+Все пакеты имеют последние версии.
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo apt install apparmor apparmor-utils strace build-essential -y[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Чтение списков пакетов…
+Построение дерева зависимостей…
+Чтение информации о состоянии…
+Уже установлен пакет build-essential самой новой версии (12.9ubuntu3).
+Уже установлен пакет strace самой новой версии (5.16-0ubuntu3).
+Предлагаемые пакеты:
+  apparmor-profiles-extra vim-addon-manager
+Следующие НОВЫЕ пакеты будут установлены:
+  apparmor apparmor-utils
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+Необходимо скачать 659 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 3 162 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apparmor amd64 3.0.4-2ubuntu2.5 [599 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apparmor-utils all 3.0.4-2ubuntu2.5 [59,5 kB]
+Предварительная настройка пакетов …
+Получено 659 kB за 0с (2 597 kB/s)
+Выбор ранее не выбранного пакета apparmor.
+(Чтение базы данных … (Чтение базы данных … 5%(Чтение базы данных … 10%(Чтение базы данных … 15%(Чтение базы данных … 20%(Чтение базы данных … 25%(Чтение базы данных … 30%(Чтение базы данных … 35%(Чтение базы данных … 40%(Чтение базы данных … 45%(Чтение базы данных … 50%(Чтение базы данных … 55%(Чтение базы данных … 60%(Чтение базы данных … 65%(Чтение базы данных … 70%(Чтение базы данных … 75%(Чтение базы данных … 80%(Чтение базы данных … 85%(Чтение базы данных … 90%(Чтение базы данных … 95%(Чтение базы данных … 100%(Чтение базы данных … на данный момент установлено 264427 файлов и каталогов.)
+Подготовка к распаковке …/apparmor_3.0.4-2ubuntu2.5_amd64.deb …
+Распаковывается apparmor (3.0.4-2ubuntu2.5) …
+Выбор ранее не выбранного пакета apparmor-utils.
+Подготовка к распаковке …/apparmor-utils_3.0.4-2ubuntu2.5_all.deb …
+Распаковывается apparmor-utils (3.0.4-2ubuntu2.5) …
+Настраивается пакет apparmor (3.0.4-2ubuntu2.5) …
+Created symlink /etc/systemd/system/sysinit.target.wants/apparmor.service → /lib/systemd/system/apparmor.service.
+Reloading AppArmor profiles 
+Skipping profile in /etc/apparmor.d/disable: usr.sbin.rsyslogd
+Настраивается пакет apparmor-utils (3.0.4-2ubuntu2.5) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+[1;33mкод возврата: 0[0m
+
+[1;36m$ dmesg | grep -i 'apparmor' | head -3[0m
+[    0.717056] LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,integrity
+[    0.717602] AppArmor: AppArmor initialized
+[    0.983654] AppArmor: AppArmor Filesystem Enabled
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo apparmor_status | head -6[0m
+apparmor module is loaded.
+33 profiles are loaded.
+31 profiles are in enforce mode.
+   /usr/bin/evince
+   /usr/bin/evince-previewer
+   /usr/bin/evince-previewer//sanitized_helper
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 2. Доступные профили ===
+[1;36m$ ls /etc/apparmor.d/[0m
+abi
+abstractions
+disable
+force-complain
+local
+lsb_release
+nvidia_modprobe
+sbin.dhclient
+tunables
+ubuntu_pro_apt_news
+ubuntu_pro_esm_cache
+usr.bin.evince
+usr.bin.tcpdump
+usr.lib.libreoffice.program.oosplash
+usr.lib.libreoffice.program.senddoc
+usr.lib.libreoffice.program.soffice.bin
+usr.lib.libreoffice.program.xpdfimport
+usr.sbin.cups-browsed
+usr.sbin.cupsd
+usr.sbin.rsyslogd
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 3. Резервная копия man и подмена на ping ===
+[1;36m$ sudo cp /usr/bin/man /usr/bin/man1[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo cp /bin/ping /usr/bin/man[0m
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 4. Запуск ДО применения профиля (пинг проходит) ===
+[1;36m$ sudo man 127.0.0.1 -c 3[0m
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.604 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.061 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.051 ms
+
+--- 127.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2045ms
+rtt min/avg/max/mdev = 0.051/0.238/0.604/0.258 ms
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 5. Создание профиля /etc/apparmor.d/man и перевод в enforce ===
+[1;36m$ sudo tee /etc/apparmor.d/man <<'EOF'
+#include <tunables/global>
+
+/usr/bin/man {
+  #include <abstractions/base>
+  deny network inet stream,
+  deny network inet dgram,
+  deny network inet raw,
+  deny capability net_raw,
+}
+EOF[0m
+#include <tunables/global>
+
+/usr/bin/man {
+  #include <abstractions/base>
+  deny network inet stream,
+  deny network inet dgram,
+  deny network inet raw,
+  deny capability net_raw,
+}
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo apparmor_parser -rT /etc/apparmor.d/man[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo aa-enforce man[0m
+Назначение /usr/bin/man принудительного режима.
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo grep -w 'usr/bin/man' /sys/kernel/security/apparmor/profiles[0m
+/usr/bin/man (enforce)
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 6. Пинг под профилем, диапазон НЕ сужен ===
+[1;36m$ echo '0 2147483647' | sudo tee /proc/sys/net/ipv4/ping_group_range[0m
+0 2147483647
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo man 127.0.0.1 -c 3; echo код=$?[0m
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.150 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.065 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.050 ms
+
+--- 127.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2044ms
+rtt min/avg/max/mdev = 0.050/0.088/0.150/0.044 ms
+код=0
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 7. Закрываем лазейку: сужаем ping_group_range ===
+[1;36m$ echo '1 0' | sudo tee /proc/sys/net/ipv4/ping_group_range[0m
+1 0
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo man 127.0.0.1; echo код=$?[0m
+код=2
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 8. Видимый отказ ядра через strace ===
+[1;36m$ sudo strace -e trace=socket man 127.0.0.1 2>&1 | tail -5[0m
+socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP) = -1 EACCES (Отказано в доступе)
+socket(AF_INET, SOCK_RAW, IPPROTO_ICMP) = -1 EPERM (Операция не позволена)
+socket(AF_INET6, SOCK_DGRAM, IPPROTO_ICMPV6) = -1 EACCES (Отказано в доступе)
+socket(AF_INET6, SOCK_RAW, IPPROTO_ICMPV6) = -1 EPERM (Операция не позволена)
++++ exited with 2 +++
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 9. Тестовая программа: текст ошибки вместо молчания ===
+[1;36m$ sudo tee /tmp/socktest.c <<'EOF'
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+int main(void) {
+    int d = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP);
+    printf("dgram: %s
+", d < 0 ? strerror(errno) : "OK");
+    int r = socket(AF_INET, SOCK_RAW | SOCK_CLOEXEC, IPPROTO_ICMP);
+    printf("raw:   %s
+", r < 0 ? strerror(errno) : "OK");
+    return 0;
+}
+EOF[0m
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+int main(void) {
+    int d = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP);
+    printf("dgram: %s\n", d < 0 ? strerror(errno) : "OK");
+    int r = socket(AF_INET, SOCK_RAW | SOCK_CLOEXEC, IPPROTO_ICMP);
+    printf("raw:   %s\n", r < 0 ? strerror(errno) : "OK");
+    return 0;
+}
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo gcc /tmp/socktest.c -o /usr/bin/man[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo man 127.0.0.1; echo код=$?[0m
+dgram: Permission denied
+raw:   Operation not permitted
+код=0
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 10. Контроль: легитимный ping не пострадал ===
+[1;36m$ sudo cp /bin/ping /usr/bin/man[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ ping -c1 127.0.0.1; echo код=$?[0m
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.146 ms
+
+--- 127.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.146/0.146/0.146/0.000 ms
+код=0
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 11. Отключение AppArmor ===
+[1;36m$ echo '0 2147483647' | sudo tee /proc/sys/net/ipv4/ping_group_range[0m
+0 2147483647
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo aa-teardown[0m
+Unloading AppArmor profiles 
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo systemctl stop apparmor[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo systemctl disable apparmor[0m
+Synchronizing state of apparmor.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install disable apparmor
+Removed /etc/systemd/system/sysinit.target.wants/apparmor.service.
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo man 127.0.0.1 -c 3[0m
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.052 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.056 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.049 ms
+
+--- 127.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2086ms
+rtt min/avg/max/mdev = 0.049/0.052/0.056/0.003 ms
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 12. Удаление AppArmor ===
+[1;36m$ sudo apt remove --purge apparmor apparmor-utils -y[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Чтение списков пакетов…
+Построение дерева зависимостей…
+Чтение информации о состоянии…
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  python3-apparmor python3-libapparmor
+Для их удаления используйте «sudo apt autoremove».
+Следующие пакеты будут УДАЛЕНЫ:
+  apparmor* apparmor-utils*
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 2 пакетов, и 0 пакетов не обновлено.
+После данной операции объём занятого дискового пространства уменьшится на 3 162 kB.
+(Чтение базы данных … (Чтение базы данных … 5%(Чтение базы данных … 10%(Чтение базы данных … 15%(Чтение базы данных … 20%(Чтение базы данных … 25%(Чтение базы данных … 30%(Чтение базы данных … 35%(Чтение базы данных … 40%(Чтение базы данных … 45%(Чтение базы данных … 50%(Чтение базы данных … 55%(Чтение базы данных … 60%(Чтение базы данных … 65%(Чтение базы данных … 70%(Чтение базы данных … 75%(Чтение базы данных … 80%(Чтение базы данных … 85%(Чтение базы данных … 90%(Чтение базы данных … 95%(Чтение базы данных … 100%(Чтение базы данных … на данный момент установлено 264660 файлов и каталогов.)
+Удаляется apparmor-utils (3.0.4-2ubuntu2.5) …
+Удаляется apparmor (3.0.4-2ubuntu2.5) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+(Чтение базы данных … (Чтение базы данных … 5%(Чтение базы данных … 10%(Чтение базы данных … 15%(Чтение базы данных … 20%(Чтение базы данных … 25%(Чтение базы данных … 30%(Чтение базы данных … 35%(Чтение базы данных … 40%(Чтение базы данных … 45%(Чтение базы данных … 50%(Чтение базы данных … 55%(Чтение базы данных … 60%(Чтение базы данных … 65%(Чтение базы данных … 70%(Чтение базы данных … 75%(Чтение базы данных … 80%(Чтение базы данных … 85%(Чтение базы данных … 90%(Чтение базы данных … 95%(Чтение базы данных … 100%(Чтение базы данных … на данный момент установлено 264587 файлов и каталогов.)
+Вычищаются файлы настройки пакета apparmor (3.0.4-2ubuntu2.5) …
+Вычищаются файлы настройки пакета apparmor-utils (3.0.4-2ubuntu2.5) …
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo aa-status 2>&1 || true[0m
+sudo: aa-status: команда не найдена
+[1;33mкод возврата: 0[0m
+
+=== ШАГ 13. Возврат стенда и уборка ===
+[1;36m$ sudo mv /usr/bin/man1 /usr/bin/man 2>/dev/null || true[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo apt install --reinstall man-db -y[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Чтение списков пакетов…
+Построение дерева зависимостей…
+Чтение информации о состоянии…
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  python3-apparmor python3-libapparmor
+Для их удаления используйте «sudo apt autoremove».
+Предварительная настройка пакетов …
+Обновлено 0 пакетов, установлено 0 новых пакетов, переустановлено 1 пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+Необходимо скачать 0 B/1 187 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 0 B.
+(Чтение базы данных … (Чтение базы данных … 5%(Чтение базы данных … 10%(Чтение базы данных … 15%(Чтение базы данных … 20%(Чтение базы данных … 25%(Чтение базы данных … 30%(Чтение базы данных … 35%(Чтение базы данных … 40%(Чтение базы данных … 45%(Чтение базы данных … 50%(Чтение базы данных … 55%(Чтение базы данных … 60%(Чтение базы данных … 65%(Чтение базы данных … 70%(Чтение базы данных … 75%(Чтение базы данных … 80%(Чтение базы данных … 85%(Чтение базы данных … 90%(Чтение базы данных … 95%(Чтение базы данных … 100%(Чтение базы данных … на данный момент установлено 264427 файлов и каталогов.)
+Подготовка к распаковке …/man-db_2.10.2-1_amd64.deb …
+Распаковывается man-db (2.10.2-1) на замену (2.10.2-1) …
+Настраивается пакет man-db (2.10.2-1) …
+Updating database of manual pages ...
+man-db.service is a disabled or a static unit not running, not starting it.
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1.22.04.1) …
+[1;33mкод возврата: 0[0m
+
+[1;36m$ sudo rm -f /etc/apparmor.d/man /tmp/socktest.c /usr/bin/man1[0m
+[1;33mкод возврата: 0[0m
+
+[1;36m$ man --help | head -2[0m
+Использование: man [ПАРАМЕТР...]
+            [СЕКЦИЯ] СТРАНИЦА...
+[1;33mкод возврата: 0[0m
+
+[1;36m$ cat /proc/sys/net/ipv4/ping_group_range[0m
+0	2147483647
+[1;33mкод возврата: 0[0m
+
+=== Лабораторная завершена, стенд в исходном состоянии ===
